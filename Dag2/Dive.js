@@ -11,8 +11,7 @@ function Dive1(array) {
   let result = 0;
   for (let i = 0; i < array.length; i++) {
     direction = array[i].split(" ", 1).pop();
-    amount = array[i].split(" ").pop();
-    amount = parseInt(amount);
+    amount = parseInt(array[i].split(" ").pop());
     switch (direction) {
       case "forward":
         horizontal = horizontal + amount;
@@ -34,8 +33,7 @@ function Dive2(array) {
   let result = 0;
   for (let i = 0; i < array.length; i++) {
     direction = array[i].split(" ", 1).pop();
-    amount = array[i].split(" ").pop();
-    amount = parseInt(amount);
+    amount = parseInt(array[i].split(" ").pop());
     switch (direction) {
       case "forward":
         horizontal = horizontal + amount;
