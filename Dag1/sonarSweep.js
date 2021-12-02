@@ -1,6 +1,6 @@
 const fs = require("fs");
 const lines = fs
-  .readFileSync("dag1.txt", { encoding: "utf-8" })
+  .readFileSync("Dag1/dag1.txt", { encoding: "utf-8" })
   .split("\n")
   .filter((x) => x)
   .map((x) => parseInt(x));
