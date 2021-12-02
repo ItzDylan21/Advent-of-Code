@@ -5,7 +5,7 @@ const lines = fs
   .filter((x) => x);
 let direction;
 let amount;
-function Dive(array) {
+function Dive1(array) {
   let horizontal = 0;
   let depth = 0;
   let result = 0;
@@ -51,5 +51,5 @@ function Dive2(array) {
   result = depth * horizontal;
   console.log(result);
 }
-Dive(lines);
+Dive1(lines);
 Dive2(lines);

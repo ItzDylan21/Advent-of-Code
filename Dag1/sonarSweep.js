@@ -5,7 +5,7 @@ const lines = fs
   .filter((x) => x)
   .map((x) => parseInt(x));
 let calc;
-function sonarSweep(array) {
+function sonarSweep1(array) {
   let count = 0;
   for (let i = 0; i < array.length; i++) {
     if (i > 0) {
@@ -33,5 +33,5 @@ function sonarSweep2(array) {
   }
   console.log(count);
 }
-sonarSweep(lines);
+sonarSweep1(lines);
 sonarSweep2(lines);
