@@ -3,6 +3,7 @@ const lines = fs
   .readFileSync("Dag2/dag2.txt", { encoding: "utf-8" })
   .split("\n")
   .filter((x) => x);
+12121212;
 let direction;
 let amount;
 function Dive(array) {
