@@ -5,10 +5,10 @@ const lines = fs
   .filter((x) => x);
 let direction;
 let amount;
+let result;
 function Dive1(array) {
   let horizontal = 0;
   let depth = 0;
-  let result = 0;
   for (let i = 0; i < array.length; i++) {
     direction = array[i].split(" ", 1).pop();
     amount = parseInt(array[i].split(" ").pop());
@@ -30,7 +30,6 @@ function Dive2(array) {
   let horizontal = 0;
   let depth = 0;
   let aim = 0;
-  let result = 0;
   for (let i = 0; i < array.length; i++) {
     direction = array[i].split(" ", 1).pop();
     amount = parseInt(array[i].split(" ").pop());
