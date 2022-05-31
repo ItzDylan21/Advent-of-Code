@@ -31,7 +31,6 @@ if ($result->num_rows > 0) {
 <link href='lib/main.css' rel='stylesheet' />
 <script src='lib/main.js'></script>
 <script>
-
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     let json = getJsonData();
@@ -46,19 +45,26 @@ if ($result->num_rows > 0) {
         right: 'timeGridDay,timeGridWeek'
       },
       initialView: 'timeGridWeek',
-      navLinks: true, // can click day/week names to navigate views
+      navLinks: true,
       editable: false,
       selectable: true,
       nowIndicator: true,
-      dayMaxEvents: true, // allow "more" link when too many events
+      dayMaxEvents: true,
       eventClick: function(info) {
-        alert('Event: ' + info.event.id + '\nTitle: ' + info.event.title);
-        // change the border color just for fun
-        info.el.style.borderColor = 'red';
+        if ( typeof favDialog.showModal !== 'function' ) {
+            alert("This function is not supported by this browser!")   
+        }
+        else
+        {
+        document.getElementById("id").innerHTML =  "Id: " + info.event.id;
+        document.getElementById("title").innerHTML =  "Title: " + info.event.title;
+        document.getElementById("start").innerHTML =  "End time: " + info.event.start.toISOString().substring(0, 19);
+        document.getElementById("end").innerHTML =  "End time: " + info.event.end.toISOString().substring(0, 19);
+        favDialog.showModal();
+        }
     },
       events: json,
     });
-
     calendar.render();
   });
 
@@ -66,7 +72,7 @@ if ($result->num_rows > 0) {
 <style>
 
   html, body {
-    overflow: hidden; /* don't do scrollbars */
+    overflow: hidden;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
   }
@@ -90,13 +96,31 @@ if ($result->num_rows > 0) {
     padding-right: 1em;
   }
 
+  dialog {
+  border: none !important;
+  border-radius: 15px;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 1.6rem;
+  max-width: 400px;
+}
+
 </style>
 </head>
 <body>
-
-  <div id='calendar-container'>
+<div id='calendar-container'>
     <div id='calendar'></div>
   </div>
-
+<dialog id="favDialog" close>
+<form method="dialog">
+    <p id="id"></p>
+    <p id="title"></p>
+    <p id="start"></p>
+    <p id="end"></p>
+    <div>
+      <button value="cancel">Cancel</button>
+      <button id="confirmBtn" value="default">Confirm</button>
+    </div>
+  </form>
+</dialog>
 </body>
 </html>
